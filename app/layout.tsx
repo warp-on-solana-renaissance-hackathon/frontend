@@ -3,7 +3,10 @@ import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import "./providers";
+import "@rainbow-me/rainbowkit/styles.css";
 import { ThemeProvider } from '@/components/ThemeProvider';
+import Providers from "@/app/providers";
 
 const font = Poppins(
   { subsets: ["latin"],
@@ -32,7 +35,9 @@ export default function RootLayout({
             enableSystem
             forcedTheme="dark"
           >
-          {children}
+            <Providers>
+              {children}
+            </Providers>
           </ThemeProvider>
         </body>
     </html>

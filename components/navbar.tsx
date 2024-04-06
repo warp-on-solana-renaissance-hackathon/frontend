@@ -9,13 +9,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-
-
 
 import Image from "next/image";
 import Link from "next/link";
 import DropDownMenu from "./drop-down-menu";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 interface NavbarProps {
   scrollToProtocol: () => void;
@@ -23,12 +21,41 @@ interface NavbarProps {
   scrollToServices: () => void;
 }
 
+// const WalletCategorySelection = ({
+//   setSelectedWallet,
+// }: {
+//   setSelectedWallet: (wallet: string) => void;
+// }) => {
+//   return (
+//     <div className="flex flex-col gap-4 py-4">
+//       <div className="col-span-4 grid grid-cols-4 gap-4">
+//         <div
+//           onClick={() => setSelectedWallet('magic-eden')}
+//           className="col-span-4 flex gap-2 items-center border-gray-300 rounded-xl border p-4 h-16 hover:scale-[1.01] transition-all hover:cursor-pointer"
+//         >
+//           <img src="/images/logo-magic-eden.png" alt="Phantom icon" className='h-10 mr-3'/>
+//           <p>Ethereum (Magic Eden)</p>
+//         </div>
+//         <div
+//           onClick={() => setSelectedWallet('evm')}
+//           className="col-span-4 flex gap-2 items-center border-gray-300 rounded-xl border p-4 h-16 hover:scale-[1.01] transition-all hover:cursor-pointer"
+//         >
+//           <img src="/images/logo-evm.png" alt="Phantom icon" className=' h-10 mr-3'/>
+//           <p>EVM</p>
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
 const Navbar = ({
   scrollToProtocol,
   scrollToPracticality,
   scrollToServices,
 }: NavbarProps) => {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
+  // const [selectedWalletCategory, setSelectedWalletCategory] = useState("");
+  // const [selectedWallet, setSelectedWallet] = useState("");
 
   const toggleDropDown = () => {
     setIsDropDownVisible(!isDropDownVisible);
@@ -57,7 +84,7 @@ const Navbar = ({
           className="cursor-pointer hidden md:flex space-x-10 items-center text-slate-300 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to bg-neutral-400 bg-opacity-50 transition-all"
         >
           <Link
-             href={"/bridge"} 
+             href={"/bridge"}
             className="text-yellow-200 hover:text-gray-50 group"
           >
             Swap<span className="group-hover:text-gray-50"> - Lite</span>
@@ -100,37 +127,35 @@ const Navbar = ({
         <div className="hidden md:flex">
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="outline" className="inline-flex h-12 animate-shimmer items-center justify-center rounded-xl border border-neutral-500 bg-[linear-gradient(110deg,#000103,45%,#333333,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-neutral-200 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-50 hover:text-white">Connect wallet</Button>  
+              <ConnectButton />
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px] ">
               <DialogHeader>
                 <DialogTitle className='pb-2'>Connect wallet with:</DialogTitle>
                 <DialogDescription>
-                  Choose how you want to connect. If you don't have a wallet, you can select a provider and create one.
+                  <p>
+                    Choose how you want to connect. If you don &apos t have a wallet, you can select a provider and create one.
+                  </p>
                 </DialogDescription>
               </DialogHeader>
-              <div className="flex flex-col gap-4 py-4">
-                <div className="col-span-4 grid grid-cols-4 gap-4">
-                  <div className="col-span-4 flex gap-2 items-center border-gray-300 rounded-xl border p-4 h-16 hover:scale-[1.01] transition-all hover:cursor-pointer">
-                    <img src="/images/logo-phantom.svg" alt="Phantom icon" className='h-10 mr-3'/>
-                    <p>Phantom (recommended)</p>
-                  </div>
-                  <div className="col-span-4 flex gap-2 items-center border-gray-300 rounded-xl border p-4 h-16 hover:scale-[1.01] transition-all hover:cursor-pointer">
-                    <img src="/images/logo-backpack.png" alt="Phantom icon" className=' h-10 mr-3'/>
-                    <p>Backpack</p>
-                  </div>
-                  <div className="col-span-4 flex gap-2 items-center border-gray-300 rounded-xl border p-4 h-16 hover:scale-[1.01] transition-all hover:cursor-pointer">
-                    <img src="/images/logo-solflare.svg" alt="Solflare icon" className='h-10 mr-3'/>
-                    <p>Solflare</p>
-                  </div>
-                </div>
-              </div>
+              {/*{*/}
+              {/*  selectedWalletCategory === "" ? (*/}
+              {/*    <WalletCategorySelection setSelectedWallet={setSelectedWalletCategory} />*/}
+              {/*  ) : selectedWalletCategory === 'magic-eden' ? (*/}
+              {/*    <MagicEdenWallets*/}
+              {/*      setSelected={setSelectedWallet}*/}
+              {/*    />*/}
+              {/*  ) : (*/}
+              {/*    <EvmWallets*/}
+              {/*      setSelected={setSelectedWallet}*/}
+              {/*    />*/}
+              {/*  )*/}
+              {/*}*/}
             </DialogContent>
           </Dialog>
         </div>
       </div>
     </div>
-  
   );
 };
 
