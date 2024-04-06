@@ -32,7 +32,6 @@ import {
 
   
 import { WavyBackground } from '@/components/ui/wavy-background';
-import { isFunction } from 'util'
 
 const page = () => {
 
@@ -40,7 +39,9 @@ const page = () => {
     const [srcChain, setSrcChain] = useState<string>('')
     const [dstChain, setDstChain] = useState<string>('')
     const [bridgeMode, setBridgeMode] = useState<string>('Token')
-
+    const handleModeChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setBridgeMode(e.target.value);
+  };
 
     // Function to handle bridge mode change
     const handleBridgeModeChange = (event: React.FormEvent<HTMLSelectElement>) => {
@@ -52,18 +53,18 @@ const page = () => {
             <WavyBackground className="max-w-4xl mx-auto pb-40">
                 
                 <Card className='p-4 mb-12'>
-                    <form>
-                        <Label htmlFor="mode"/>
-                        <Select value={bridgeMode}>
-                            <SelectTrigger id='mode'>
-                                <SelectValue placeholder="What are we bridging?" />
-                            </SelectTrigger>
-                            <SelectContent onChange={(e: ChangeEvent<HTMLSelectElement>) => setBridgeMode(e.target.value)}>
-                                <SelectItem value="token">Token</SelectItem>
-                                <SelectItem value="nft">NFT</SelectItem>
-                            </SelectContent>
-                        </Select>
-                    </form>
+                <form>
+        <Label htmlFor="mode">Mode</Label> {/* Make sure you have text or some content inside your Label */}
+        <Select value={bridgeMode} onChange={handleModeChange}> 
+          <SelectTrigger id='mode'>
+            <SelectValue placeholder="What are we bridging?" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="token">Token</SelectItem>
+            <SelectItem value="nft">NFT</SelectItem>
+          </SelectContent>
+        </Select>
+      </form>
                 </Card>
                  
 
@@ -150,7 +151,7 @@ const page = () => {
                         </Button>
                     </CardFooter>
                 </Card>
-{/* 
+
                 <Card className='min-w-96'>
                     <CardHeader className='mb-4'>
                         <CardTitle>
@@ -215,7 +216,7 @@ const page = () => {
                         </DialogContent>
                     </Dialog>
                     </CardFooter>
-                </Card> */}
+                </Card>
             </WavyBackground>
         </>
         
