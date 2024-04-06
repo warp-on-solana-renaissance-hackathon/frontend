@@ -18,15 +18,19 @@ import Link from "next/link";
 import DropDownMenu from "./drop-down-menu";
 
 interface NavbarProps {
-  scrollToProtocol: () => void;
-  scrollToPracticality: () => void;
-  scrollToServices: () => void;
+  className?: string;
+  scrollToProtocol?: () => void;
+  scrollToPracticality?: () => void;
+  scrollToServices?: () => void;
+  bridgePage?: boolean;
 }
 
 const Navbar = ({
+  className,
   scrollToProtocol,
   scrollToPracticality,
   scrollToServices,
+  bridgePage=false,
 }: NavbarProps) => {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
 
@@ -38,9 +42,11 @@ const Navbar = ({
     setIsDropDownVisible(false);
   };
 
+
+
   return (
     <div>
-      <div className="p-6 md:p-10 flex items-center justify-between z-50">
+      <div className="p-6 md:p-10 flex items-center justify-between">
         <div>
           <Link className="cursor-pointer" href="/">
             <Image
@@ -56,24 +62,28 @@ const Navbar = ({
         <div
           className="cursor-pointer hidden md:flex space-x-10 items-center text-slate-300 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to bg-neutral-400 bg-opacity-50 transition-all"
         >
-          <Link
+          { !bridgePage && (<Link
              href={"/bridge"} 
             className="text-yellow-200 hover:text-gray-50 group"
           >
             Swap<span className="group-hover:text-gray-50"> - Lite</span>
-          </Link>
-          <div
+          </Link>)}
+         { !bridgePage && (<><div
             onClick={scrollToProtocol}
             className="hover:text-gray-50"
           >
             Protocol
           </div>
+          
           <div
             onClick={scrollToPracticality}
             className="hover:text-gray-50"
           >
             Practicality
-          </div>
+          </div></>
+          )
+         } 
+          
         </div>
 
         <div className="flex md:hidden">

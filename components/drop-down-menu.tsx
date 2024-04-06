@@ -3,7 +3,7 @@ import Link from "next/link";
 
 interface DropDownMenuProps {
   onClose: () => void;
-  scrollToServices: () => void; // Add scrollToServices function to props
+  scrollToServices?: () => void; // Add scrollToServices function to props
 }
 
 const DropDownMenu: React.FC<DropDownMenuProps> = ({ onClose, scrollToServices }) => {
@@ -44,7 +44,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ onClose, scrollToServices }
         </Link>
 
         {/* Add onClick handler to Services link */}
-        <div onClick={() => { scrollToServices(); onClose(); }} className="cursor-pointer text-black text-2xl">
+        <div onClick={() => { scrollToServices?.(); onClose(); }} className="cursor-pointer text-black text-2xl">
           Services
         </div>
       </div>
