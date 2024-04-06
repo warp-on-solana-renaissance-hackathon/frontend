@@ -7,20 +7,14 @@ import Link from "next/link";
 import DropDownMenu from "./drop-down-menu";
 
 interface NavbarProps {
-  scrollToEcosystem: () => void;
-  scrollToPracticality: () => void;
-  scrollToConsensusValidation: () => void;
-  scrollToBridgingTheGap: () => void;
   scrollToProtocol: () => void;
+  scrollToPracticality: () => void;
   scrollToServices: () => void;
 }
 
 const Navbar = ({
   scrollToProtocol,
-  scrollToEcosystem,
   scrollToPracticality,
-  scrollToConsensusValidation,
-  scrollToBridgingTheGap,
   scrollToServices,
 }: NavbarProps) => {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
@@ -63,24 +57,6 @@ const Navbar = ({
           >
             Practicality
           </div>
-          <div
-            onClick={scrollToConsensusValidation}
-            className="hover:text-gray-50"
-          >
-            Consensus Validation
-          </div>
-          <div
-            onClick={scrollToBridgingTheGap}
-            className="hover:text-gray-50"
-          >
-            Bridging the Gap
-          </div>
-          <div
-            onClick={scrollToEcosystem}
-            className="hover:text-gray-50"
-          >
-            Ecosystem
-          </div>
         </div>
 
         <div className="flex md:hidden">
@@ -106,8 +82,8 @@ const Navbar = ({
 
         <div className="hidden md:flex">
           <Link
-            href="/contact"
-            className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-50"
+            href="/connect-wallet"
+            className="inline-flex h-12 animate-shimmer items-center justify-center rounded-xl border border-neutral-500 bg-[linear-gradient(110deg,#000103,45%,#333333,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-neutral-200 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-50"
           >
             Connect Wallet
           </Link>

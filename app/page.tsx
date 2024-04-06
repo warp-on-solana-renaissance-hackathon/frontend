@@ -4,6 +4,9 @@ import { useState, useRef } from "react";
 import Navbar from "@/components/navbar";
 import { Spotlight } from "@/components/ui/spotlight";
 import Link from "next/link";
+import {EncryptionEffect} from "@/app/snippets/encryption-effect";
+import {InfiniteMovingCardsSwiper} from "@/app/snippets/infinite-moving-card-swiper";
+import {Practicality} from "@/app/snippets/practicality";
 
 export default function Home() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -16,34 +19,23 @@ export default function Home() {
     setDropdownVisible(false);
   };
 
-  const websiteDesignRef = useRef<HTMLDivElement>(null);
-  const graphicDesignRef = useRef<HTMLDivElement>(null);
-  const shopifyStoresRef = useRef<HTMLDivElement>(null);
-  const brandsRef = useRef<HTMLDivElement>(null);
+  const protocolRef = useRef<HTMLDivElement>(null);
+  const practicalityRef = useRef<HTMLDivElement>(null);
+  const consensusValidation = useRef<HTMLDivElement>(null);
+  const bridgingTheGap = useRef<HTMLDivElement>(null);
+  const ecosystem = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
 
-  const scrollToPracticality = () => {
-    websiteDesignRef.current?.scrollIntoView({
+  const scrollToProtocol = () => {
+    protocolRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
       inline: "nearest",
     });
   };
 
-  const scrollToProtocol = () => {
-    websiteDesignRef.current?.scrollIntoView({ behavior: "smooth" });
-  }
-
-  const scrollToConsensusValidation = () => {
-    graphicDesignRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToBridgingTheGap = () => {
-    shopifyStoresRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToEcosystem = () => {
-    brandsRef.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToPracticality = () => {
+    practicalityRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   // Function to scroll to Services section
@@ -56,9 +48,6 @@ export default function Home() {
       <Navbar
         scrollToProtocol={ scrollToProtocol }
         scrollToPracticality={ scrollToPracticality }
-        scrollToConsensusValidation={ scrollToConsensusValidation }
-        scrollToBridgingTheGap={ scrollToBridgingTheGap }
-        scrollToEcosystem={ scrollToEcosystem }
         scrollToServices={ scrollToServices }
       />
 
@@ -86,6 +75,23 @@ export default function Home() {
         >
           Join waitlist
         </Link>
+        <div
+          className="w-full pt-20"
+        >
+          <InfiniteMovingCardsSwiper />
+        </div>
+        <div
+          ref={ protocolRef }
+          className="w-full"
+        >
+          <EncryptionEffect />
+        </div>
+        <div
+          ref={ practicalityRef }
+          className="w-full pt-20"
+        >
+          <Practicality />
+        </div>
       </div>
     </div>
   );
