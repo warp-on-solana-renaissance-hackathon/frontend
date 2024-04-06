@@ -1,5 +1,4 @@
 'use client'
-
 import { useState, useRef } from "react";
 import Navbar from "@/components/navbar";
 import { Spotlight } from "@/components/ui/spotlight";
@@ -7,6 +6,7 @@ import Link from "next/link";
 import {EncryptionEffect} from "@/app/snippets/encryption-effect";
 import {InfiniteMovingCardsSwiper} from "@/app/snippets/infinite-moving-card-swiper";
 import {Practicality} from "@/app/snippets/practicality";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export default function Home() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -44,6 +44,7 @@ export default function Home() {
   };
 
   return (
+
     <div className="w-full md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">
       <Navbar
         scrollToProtocol={ scrollToProtocol }

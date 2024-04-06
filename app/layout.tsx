@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const font = Poppins(
   { subsets: ["latin"],
@@ -25,7 +26,14 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={font.className}>
           <Analytics />
+          <ThemeProvider
+            attribute="class"
+            disableTransitionOnChange
+            enableSystem
+            forcedTheme="dark"
+          >
           {children}
+          </ThemeProvider>
         </body>
     </html>
   );
