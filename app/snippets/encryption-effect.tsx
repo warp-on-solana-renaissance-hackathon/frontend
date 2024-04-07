@@ -52,19 +52,15 @@ export const EncryptionEffect = () => {
             </div>
 
             <div className="encryption-box px-[15px] py-[4px] z-[20] my-[20px] border-[#7042f88b] opacity-[0.9]">
-              <h1 className="encryption-text text-[1.2vw]">
-                Security and Integrity
+              <h1 className="encryption-text text-[3.5vw]">
+                Bridging
               </h1>
             </div>
           </div>
         </div>
         <div className="w-7/12 z-[20] mt-[-8vw] px-[5px]">
           <div className="cursive text-[1.6vw] font-medium text-center text-gray-300">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-            molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-            numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-            optio, eaque rerum! Provident similique accusantium nemo autem.
-            quia.
+          ERC20 Tokens | SPL Tokens | NFTs
           </div>
         </div>
       </div>
